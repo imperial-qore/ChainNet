@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import Dataset
 import numpy as np
 
+
 class ChainNetDataset(Dataset):
     def __init__(self, data_list):
         self.data_list = data_list

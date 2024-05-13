@@ -3,13 +3,11 @@ from input import ChainNetDataset, ProcessData, CollateBatch
 from ChainNet import Net
 from utils import SaveBestModel
 from utils import draw_curve
-
+import time
 import torch
 import torch.nn as nn
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data import DataLoader
-
-import time
 
 def train(model, criterion, optimizer, train_loader, epoch):
     model.train()
@@ -74,9 +72,9 @@ y_err['val'] = []
 x_epoch = []
 
 start_data = time.time()
-data_list = ProcessData(root='/your folder to save training data', numSamples=40000)
+data_list = ProcessData(root='Data/train/', numSamples=40000)
 train_dataset = ChainNetDataset(data_list)
-data_list = ProcessData(root='/your folder to save validation data', numSamples=10000)
+data_list = ProcessData(root='Data/val/', numSamples=10000)
 val_dataset = ChainNetDataset(data_list)
 
 train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, collate_fn=CollateBatch)
@@ -84,7 +82,7 @@ val_loader = DataLoader(val_dataset, batch_size=128, collate_fn=CollateBatch)
 end_data = time.time()
 print(f'Data loading time:{end_data-start_data}')
 
-model = Net(t=8, dim_node=64, dim_path=64, dim_linear=64, num_heads=2, negative_slope=0.2, dropout=0.0)
+model = Net(num_iterations=8, size_realnode=64, size_hypernode=64, num_readoutneurons=64, num_heads=2, negative_slope=0.2, dropout=0.0)
 model.to(device)
 
 criterion = nn.MSELoss()

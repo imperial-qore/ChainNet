@@ -36,5 +36,5 @@ class SaveBestModel:
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': criterion,
-                }, './best_model.pth')
+                }, './model.pth')
         return self.best_valid_loss

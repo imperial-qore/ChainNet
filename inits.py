@@ -2,6 +2,7 @@ import math
 from typing import Any
 from torch import Tensor
 
+
 def glorot(value: Any):
     if isinstance(value, Tensor):
         stdv = math.sqrt(6.0 / (value.size(-2) + value.size(-1)))
