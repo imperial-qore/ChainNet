@@ -4,19 +4,23 @@ ChainNet is a customized graph neural network model designed to evaluate the rel
 The input to ChainNet is a deployment plan characterized by a set of files covering two main aspects: (1) the mapping relationship between fragments and devices, and (2) the features of services, fragments, and devices. The output includes the throughput and latency of each service chain. <be>
 
 # Quick start
-Clone repo:
+1. Clone repo:
 ```bash
 git clone https://github.com/imperial-qore/ChainNet.git
 cd ChainNet/
 ```
 
-Create an environment in line with the environment.yaml file:
+2. Create an environment in line with the environment.yaml file:
 ```bash
 conda env create -f environment.yaml
 conda activate ChainNet_env
 ```
+or install the packages in a Python 3.8 environment:
+```bash
+pip install -r requirements.txt
+```
 
-To train and test ChainNet, use the following scripts: 
+3. To train and test ChainNet, use the following scripts: 
 ```bash
 python main.py
 python evaluation.py
